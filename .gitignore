@@ -1,0 +1,13 @@
+*.log
+*.sql
+*.sqlite
+
+.DS_Store*
+ehthumbs.db
+Thumbs.db
+
+.powder
+.powrc
+bundler_stubs
+.bundle
+.vimrc

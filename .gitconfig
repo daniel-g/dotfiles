@@ -1,0 +1,63 @@
+[user]
+	name = Daniel Gaytan
+	email = dgaytan6@gmail.com
+[alias]
+  co = checkout
+  ci = commit
+  cm = commit -m
+  rb = rebase
+  s = status
+  mergecommit = merge --no-ff
+  mergewait = merge --no-ff --no-commit
+  start = flow feature start
+  release = flow release
+
+  staged = diff --cached
+  addp = add -p
+  cop = checkout -p
+  master = !sh -c '\
+                    git checkout master && \
+                    git pull origin master \
+                    ' -
+  develop = !sh -c '\
+                    git checkout develop && \
+                    git pull origin develop \
+                    ' -
+  integration = !sh -c '\
+                        git checkout integration && \
+                        git pull origin integration \
+                        ' -
+  wip = branch -a --no-merged
+  done = branch -a --merged
+  amend = commit --amend
+  b = branch
+  cleanbr = !git branch --no-color --merged | grep -v \"\\(master\\|develop\\|integration\\)\" | xargs -L1 git br -d
+  diffwords = diff --word-diff
+  stagedwords = diff --cached --word-diff
+  head = push -u origin HEAD
+
+  assume-unchanged = update-index --assume-unchanged
+  no-assume-unchanged = update-index --no-assume-unchanged
+  list-assumed-unchanged-files = !sh -c 'git ls-files -v | grep "^h"'
+
+  #
+  # Hub gem
+  #
+
+  prd = pull-request -b develop
+  pre = pull --rebase
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+[merge]
+  tool = opendiff
+[rerere]
+  enabled = 1
+[core]
+	editor = vim
+	excludesfile = /Users/Daniel/.gitignore
+	autocrlf = input
+[github]
+	user = daniel-g

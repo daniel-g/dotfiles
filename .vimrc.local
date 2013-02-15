@@ -1,0 +1,94 @@
+colorscheme molokai
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RESIZE WINDOW
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! ResizeWindow()
+  if has('gui_running')
+    set lines=500
+    set columns=500
+  endif
+endfunction
+
+:command! ResizeWindow :call ResizeWindow()
+:map <leader>M :ResizeWindow<cr>
+
+if has('gui_running')
+  set guifont=Menlo:h14
+  set lines=500
+  set columns=500
+  set guioptions=egmrt
+endif
+
+if has('statusline')
+  "set laststatus=2
+  " Broken down into easily includeable segments
+  set statusline=%<%f\   " Filename
+  set statusline+=%w%h%m%r " Options
+  "set statusline+=%{fugitive#statusline()} "  Git Hotness
+  "set statusline+=\ [%{&ff}/%Y]            " filetype
+  "set statusline+=\ [%{getcwd()}]          " current dir
+  "set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
+  set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+  set ruler
+endif
+
+let g:ctrlp_max_height = 20
+
+if filereadable(expand($PWD . '/script/rails'))
+  abbr rli* Rails.logger.info '**************'
+  abbr cl console.log
+endif
+
+map <D-F> :Ack!<space>
+map <Leader>f :Ack!<space>
+
+let g:syntastic_auto_loc_list=1
+
+let g:github_user = 'daniel-g'
+let g:github_token = '65017f9c12aff775a040ce96c2b1ed1a'
+
+Bundle 'tpope/vim-unimpaired'
+
+" Unimpaired configuration
+" Bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PROMOTE VARIABLE TO EXPOSE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! PromoteToExpose()
+  :normal! dd
+  " :exec '?^\s*it\>'
+  :normal! P
+  :.s/\(\w\+\) = \(.*\)$/expose(:\1) { \2 }/
+  :normal ==
+endfunction
+:command! PromoteToExpose :call PromoteToExpose()
+:map <leader>e :PromoteToExpose<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PROMOTE VARIABLE TO DEF (RUBY)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! PromoteToDef()
+  :normal! dd
+  " :exec '?^\s*it\>'
+  :normal! P
+  :.s/\(\w\+\) = \(.*\)$/def \1\r\2\rend/
+  :normal ==
+endfunction
+:command! PromoteToDef :call PromoteToDef()
+:map <leader>d :PromoteToDef<cr>
+
+:map <leader>" viWS"
+:map <leader>' viWS'
+
+" MacVIM shift+arrow-keys behavior (required in .vimrc)
+unlet macvim_hig_shift_movement
+
+set exrc			" enable per-directory .vimrc files
+set secure			" disable unsafe commands in local .vimrc files
