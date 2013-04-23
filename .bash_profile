@@ -24,6 +24,7 @@ export PS1="\u@$BLACK\h: $BLACK\w$GREEN\$(parse_git_branch)\$(parse_svn_branch)$
 alias g='git'
 alias gpoh='git push origin HEAD'
 
+alias r='rspec'
 alias st='script/test'
 alias sp='script/push'
 alias gs='bundle exec guard start'
