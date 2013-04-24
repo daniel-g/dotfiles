@@ -52,9 +52,7 @@ fi
 source ~/.git-flow-completion.sh
 source ~/.completion-rake.sh
 
-eval "$(hub alias -s)"
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-git() { command git "$@"; if [[ "$1" == *checkout* ]] || [[ "$1" == *co* ]]; then [[ -s .rvmrc ]] && . .rvmrc; fi }
+git() { command hub "$@"; if [[ "$1" == *checkout* ]] || [[ "$1" == *co* ]]; then [[ -s .rvmrc ]] && . .rvmrc; fi }
