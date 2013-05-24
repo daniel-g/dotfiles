@@ -44,6 +44,7 @@
   # Hub gem
   #
 
+  pr = pull-request
   prd = pull-request -b develop
   pre = pull --rebase
 [color]
