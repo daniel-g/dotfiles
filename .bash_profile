@@ -33,6 +33,7 @@ alias v='mvim'
 alias fhistory='history | grep'
 alias fps='ps -ax | grep'
 alias mig='be rake db:migrate db:test:prepare'
+alias migs='be rake db:migrate db:test:load_structure'
 alias j='jump'
 alias kj='kill -s KILL'
 alias cpmod="find . | perl -ne 'chomp; $a = (stat $_)[2] & 07777; $a = ($a & 07707) | (($a >> 3) & 070); chmod($a, $_)'"
