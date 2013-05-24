@@ -42,6 +42,7 @@ alias depintegration='git push origin HEAD && git push integration HEAD:master'
 alias depstaging='git push origin HEAD && git push staging HEAD:master'
 alias depproduction='git push origin HEAD && git push production HEAD:master'
 alias gitk='gitx'
+alias fetch='git fetch'
 
 export PATH=/usr/local/bin:$PATH
 export EDITOR=vim
