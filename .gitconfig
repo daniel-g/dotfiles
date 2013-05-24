@@ -7,8 +7,8 @@
   cm = commit -m
   rb = rebase
   s = status
-  mergecommit = merge --no-ff
-  mergewait = merge --no-ff --no-commit
+  mc = merge --no-ff
+  mw = merge --no-ff --no-commit
   start = flow feature start
   release = flow release
 
