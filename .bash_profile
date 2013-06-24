@@ -34,6 +34,7 @@ alias fhistory='history | grep'
 alias fps='ps -ax | grep'
 alias mig='be rake db:migrate db:test:prepare'
 alias migs='be rake db:migrate db:test:load_structure'
+alias migtest='be rake db:test:load_structure'
 alias j='jump'
 alias kj='kill -s KILL'
 alias cpmod="find . | perl -ne 'chomp; $a = (stat $_)[2] & 07777; $a = ($a & 07707) | (($a >> 3) & 070); chmod($a, $_)'"
@@ -44,7 +45,7 @@ alias depproduction='git push origin HEAD && git push production HEAD:master'
 alias gitk='gitx'
 alias fetch='git fetch'
 
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
 export EDITOR=vim
 export SHOWOFF_EVAL_RUBY=1
 

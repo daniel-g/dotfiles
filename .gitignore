@@ -10,3 +10,4 @@ Thumbs.db
 bundler_stubs
 .bundle
 .vimrc
+.powenv

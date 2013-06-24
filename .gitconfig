@@ -8,6 +8,7 @@
   rb = rebase
   s = status
   mc = merge --no-ff
+  ml = merge --no-ff @{-1}
   mw = merge --no-ff --no-commit
   start = flow feature start
   release = flow release
