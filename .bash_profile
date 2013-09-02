@@ -45,7 +45,7 @@ alias depproduction='git push origin HEAD && git push production HEAD:master'
 alias gitk='gitx'
 alias fetch='git fetch'
 
-export PATH=/usr/local/bin:/usr/local/share/npm/bin:/usr/local/share/npm/lib/node_modules/:$PATH
+export PATH=/usr/local/bin:/usr/local/share/npm/bin:/usr/local/share/npm/lib/node_modules:/usr/local/sbin:$PATH
 export EDITOR=vim
 export SHOWOFF_EVAL_RUBY=1
 
