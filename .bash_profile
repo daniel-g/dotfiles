@@ -59,3 +59,5 @@ source ~/.completion-rake.sh
 export PATH="/usr/local/heroku/bin:$PATH"
 
 git() { command hub "$@"; if [[ "$1" == *checkout* ]] || [[ "$1" == *co* ]]; then [[ -s .rvmrc ]] && . .rvmrc; fi }
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

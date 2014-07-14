@@ -62,10 +62,18 @@ vmap <C-Down> ]egv
 " PROMOTE VARIABLE TO EXPOSE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! PromoteToExpose()
+  let line = getline('.')
+  let longExposeRegexp = '\(\w\+\) = \(.*\)$'
+  let longExposeSubs = 'expose(:\1) { \2 }'
+  let shortExposeRegexp = '\(\w\+\)$'
+  let shortExposeSubs = 'expose(:\1)'
+  let expose = matchstr(line, longExposeRegexp)
   :normal! dd
-  " :exec '?^\s*it\>'
-  :normal! P
-  :.s/\(\w\+\) = \(.*\)$/expose(:\1) { \2 }/
+  if empty(expose)
+    :put! =substitute(line, shortExposeRegexp, shortExposeSubs, '')
+  else
+    :put! =substitute(line, longExposeRegexp, longExposeSubs, '')
+  endif
   :normal ==
 endfunction
 :command! PromoteToExpose :call PromoteToExpose()
@@ -76,7 +84,6 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! PromoteToDef()
   :normal! dd
-  " :exec '?^\s*it\>'
   :normal! P
   :.s/\(\w\+\) = \(.*\)$/def \1\r\2\rend/
   :normal ==
@@ -91,7 +98,6 @@ endfunction
 unlet macvim_hig_shift_movement
 
 " noremap j j    <- To rollback
-noremap j 2j
 
 set pastetoggle=<F2>
 

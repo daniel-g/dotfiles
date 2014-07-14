@@ -9,6 +9,7 @@
   s = status
   mc = merge --no-ff
   ml = merge --no-ff @{-1}
+  back = checkout @{-1}
   mw = merge --no-ff --no-commit
   start = flow feature start
   release = flow release
@@ -40,6 +41,8 @@
   assume-unchanged = update-index --assume-unchanged
   no-assume-unchanged = update-index --no-assume-unchanged
   list-assumed-unchanged-files = !sh -c 'git ls-files -v | grep "^h"'
+
+  pick = cherry-pick
 
   #
   # Hub gem
