@@ -3,7 +3,7 @@
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 parse_git_branch () {
-	        git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (git: \1)/'
+        git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (git: \1)/'
 }
 parse_svn_branch() {
         parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk '{print " (svn: "$1")" }'
@@ -37,7 +37,6 @@ alias fps='ps -ax | grep'
 alias mig='be rake db:migrate db:test:prepare'
 alias migs='be rake db:migrate db:test:load_structure'
 alias migtest='be rake db:test:load_structure'
-alias j='jump'
 alias kj='kill -s KILL'
 alias cpmod="find . | perl -ne 'chomp; $a = (stat $_)[2] & 07777; $a = ($a & 07707) | (($a >> 3) & 070); chmod($a, $_)'"
 alias fcache='dscacheutil -flushcache'

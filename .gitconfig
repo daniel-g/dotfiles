@@ -1,6 +1,6 @@
 [user]
-	name = Daniel Gaytan
-	email = dgaytan6@gmail.com
+  name = Daniel Gaytan
+  email = dgaytan6@gmail.com
 [alias]
   co = checkout
   ci = commit
@@ -29,8 +29,10 @@
                         git checkout integration && \
                         git pull origin integration \
                         ' -
-  wip = branch -a --no-merged
-  done = branch -a --merged
+  wip = branch --no-merged
+  done = branch --merged
+  wipa = branch -a --no-merged
+  donea = branch -a --merged
   amend = commit --amend
   b = branch
   cleanbr = !git branch --no-color --merged | grep -v \"\\(master\\|develop\\|integration\\)\" | xargs -L1 git br -d
@@ -51,6 +53,10 @@
   pr = pull-request
   prd = pull-request -b develop
   pre = pull --rebase
+
+  # OneLogin
+
+  ancestor = !bash -c 'diff --old-line-format= --new-line-format= <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | head -1' -
 [color]
   branch = auto
   diff = auto

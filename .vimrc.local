@@ -40,8 +40,8 @@ if filereadable(expand($PWD . '/script/rails'))
   abbr cl console.log
 endif
 
-map <D-F> :Ack!<space>
-map <Leader>f :Ack!<space>
+map <D-F> :Ag!<space>
+map <Leader>f :Ag!<space>
 
 let g:syntastic_auto_loc_list=1
 
