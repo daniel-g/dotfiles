@@ -101,5 +101,24 @@ unlet macvim_hig_shift_movement
 
 set pastetoggle=<F2>
 
+if has("win32")
+  let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
+elseif executable('ag')
+  let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+elseif executable('ack-grep')
+  let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
+elseif executable('ack')
+  let s:ctrlp_fallback = 'ack %s --nocolor -f'
+else
+  let s:ctrlp_fallback = 'find %s -type f'
+endif
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+  \ 'fallback': s:ctrlp_fallback
+  \ }
+
 set exrc			" enable per-directory .vimrc files
 set secure			" disable unsafe commands in local .vimrc files
